@@ -13,7 +13,7 @@ from bs4 import BeautifulSoup as soup
 from urllib.request import urlopen
 import requests
 import random
-import pyowm    
+import pyowm
 import time
 import wolframalpha
 from pygame import mixer
@@ -45,19 +45,21 @@ def wishMe():
 
 
 def takeCommand():
+
     r = sr.Recognizer()
     with sr.Microphone() as source:
         print("Listening...")
         r.pause_threshold = 1
         audio = r.listen(source)
+
     try:
         print("Recognizing...")
-        query = r.recognize_google(audio, language="en-us")
-        print(f"You said: {query}\n")
+        query = r.recognize_google(audio, language='en-in')
+        print(f"User said: {query}\n")
 
     except Exception as e:
         # print(e)
-        speak("Repeat, please!")
+        print("Say that again please...")
         return "None"
     return query
 
@@ -130,42 +132,36 @@ if __name__ == "__main__":
             answer = next(res.results).text
             speak("The answer is " + answer)
 #MATH---------------------------------------
+#        elif "open youtube" in query:
+#             speak('The website you have requested has been opened for you, Sir.')
+#             time.sleep(1)
+#             webbrowser.get(chrome).open("youtube.com")
 
+#        elif "open github" in query:
+#             speak('The website you have requested has been opened for you, Sir.')
+#             time.sleep(1)
+#             webbrowser.get(chrome).open("github.com")
 
-        elif "open youtube" in query:
-             speak('The website you have requested has been opened for you, Sir.')
-             time.sleep(1)
-             webbrowser.get(chrome).open("youtube.com")
+#        elif "open google" in query:
+#             speak('The website you have requested has been opened for you, Sir.')
+#             time.sleep(1)
+#             webbrowser.get(chrome).open("google.com")
 
-        elif "open github" in query:
-             speak('The website you have requested has been opened for you, Sir.')
-             time.sleep(1)
-             webbrowser.get(chrome).open("github.com")
+#        elif "open twitch" in query:
+#             speak('The website you have requested has been opened for you, Sir.')
+ #            time.sleep(1)
+#             webbrowser.get(chrome).open("twitch.tv")
 
-        elif "open google" in query:
-             speak('The website you have requested has been opened for you, Sir.')
-             time.sleep(1)
-             webbrowser.get(chrome).open("google.com")
-
-        elif "open twitch" in query:
-             speak('The website you have requested has been opened for you, Sir.')
-             time.sleep(1)
-             webbrowser.get(chrome).open("twitch.tv")
-
-        elif "open my website" in query:
-             speak('The website you have requested has been opened for you, Sir.')
-             time.sleep(1)
-             webbrowser.get(chrome).open("hunguy.cf")
+#        elif "open my website" in query:
+#             speak('The website you have requested has been opened for you, Sir.')
+#             time.sleep(1)
+#             webbrowser.get(chrome).open("hunguy.cf")
 
         elif "play music" in query:
             music_dir = "C:\\Users\\degin\\Documents\\Alkotások\\Folyamatban levő projectjeim\\8D AUDIO\\kesz"
             songs = os.listdir(music_dir)
             print(songs)
             os.startfile(os.path.join(music_dir, songs[0]))
-
-        elif "stop" or "shut down" in query:
-            speak("Goodbye.")
-            sys.exit()
 
         elif "what\'s up" in query:
             speak('Just Chilling.')
