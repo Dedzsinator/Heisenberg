@@ -90,9 +90,9 @@ if __name__ == "__main__":
             query = query.replace("wikipedia", "")
             results = wikipedia.summary(query)
             speak("According to Wikipedia")
-            speak(results) 
+            speak(results)
 
-        elif 'current weather' "how the weather looks like" "weather" in query:
+        elif 'current weather' or "how the weather looks like" or "weather" in query:
                 owm = pyowm.OWM('0118c4ca922a0d0d17c775e858bcf161')
                 observation = owm.weather_at_place("Targu-Mures, RO")
                 w = observation.get_weather()
@@ -101,7 +101,7 @@ if __name__ == "__main__":
                 speak(w)
                 speak(temperature)
                 speak(tomorrow)
-                speak('Current weather in %s is %s. The maximum temperature is %0.2f and the minimum temperature is %0.2f degree celcius' % (
+                speak('Current weather in %s is %s. The maximum temperature is %0.2f and the minimum temperature is %0.2f degree celsius' % (
                     observation, temperature['temp_max'], temperature['temp_min'], tomorrow['temp_max'], tomorrow['temp_min']))
 
         elif 'open' in query:
@@ -119,7 +119,7 @@ if __name__ == "__main__":
 
         elif "what\'s the value of pi" in query:
             pi = math.pi
-            speak("The approximate value of PI is " + str(math.pi) )
+            speak("The approximate value of PI is " + str(pi))
 
         elif "calculate" in query:
 
